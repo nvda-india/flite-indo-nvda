@@ -116,16 +116,19 @@ cst_val *cmu_indic_tokentowords(cst_item *token) {
 #include "indic_pan_num_table.h"
 
 
-int ts_utf8_sequence_length(char c0);
-// inline int utf8_sequence_length(char c0)
-// {
-    // Get the expected length of UTF8 sequence given its most
-    // significant byte
-//    return (( 0xE5000000 >> (( c0 >> 3 ) & 0x1E )) & 3 ) + 1;
-// }
+#ifdef _WIN32
+__inline int ts_utf8_sequence_length(char c0)
+#else
+int ts_utf8_sequence_length(char c0)
+#endif
+{
+	/* Get the expected length of UTF8 sequence given its most */
+	/* significant byte */
+	return ((0xE5000000 >> ((c0 >> 3) & 0x1E)) & 3) + 1;
+}
 
 
-int ts_utf8_sequence_length(char c0);
+// int ts_utf8_sequence_length(char c0);
 // inline int utf8_sequence_length(char c0)
 // {
     // Get the expected length of UTF8 sequence given its most
