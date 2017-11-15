@@ -46,6 +46,8 @@ extern CComModule _Module;
 #include <spcollec.h>
 #include "flite.h"
 
+int audioStreamChunk(const cst_wave *w, int start, int size, int last, cst_audio_streaming_info *asi);
+
 class ATL_NO_VTABLE CFliteTTSEngineObj :
 	public CComObjectRootEx<CComMultiThreadModel>,
 	public ISpTTSEngine,
@@ -61,8 +63,10 @@ public:
 		if (curr_utt) delete_utterance(curr_utt);
 		if (unregfunc && curr_vox) (*unregfunc)(curr_vox);
 	}
+	/*This function is a friend because it needs to access private members. it should be a object method, but audio stream does not take object methods*/
+		friend int audioStreamChunk(const cst_wave *w, int start, int size, int last, cst_audio_streaming_info *asi);
 
-/* ISpObjectWithToken methods */
+	/* ISpObjectWithToken methods */
 public:
 	STDMETHODIMP SetObjectToken(ISpObjectToken * pToken);
 	STDMETHODIMP GetObjectToken(ISpObjectToken** ppToken)

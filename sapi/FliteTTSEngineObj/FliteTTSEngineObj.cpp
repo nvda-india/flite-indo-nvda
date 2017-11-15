@@ -48,6 +48,26 @@ extern "C" {
 
 static cst_val *sapi_tokentowords(cst_item *i);
 
+int audioStreamChunk(const cst_wave *w, int start, int size, int last, cst_audio_streaming_info *asi)
+{
+	CFliteTTSEngineObj *speechObject = (CFliteTTSEngineObj*)asi->userdata;
+	ULONG b;
+
+	speechObject->get_actions_and_do_them();
+	if (speechObject->aborted) return CST_AUDIO_STREAM_STOP;
+
+	cst_wave *wav = copy_wave(w);
+	if (speechObject->volume != 100)
+		cst_wave_rescale(wav, speechObject->volume * 65536 / 100);
+	speechObject->site->Write(&wav->samples[start],
+		size * sizeof(*wav->samples),
+		&b);
+	speechObject->bcount += size * sizeof(*wav->samples);
+
+	delete_wave(wav);
+	return CST_AUDIO_STREAM_CONT;
+}
+
 STDMETHODIMP
 CFliteTTSEngineObj::SetObjectToken(ISpObjectToken* pToken)
 {
@@ -281,23 +301,27 @@ CFliteTTSEngineObj::synth_one_utt()
 	if (!(curr_utt && tok_rel && relation_head(tok_rel)))
 		return;
 
+	cst_audio_streaming_info *asi;
+	asi = new_audio_streaming_info();
+	asi->asc = audioStreamChunk;
+	asi->userdata = this;
+
 	/* Link the vox features into the utterance features so the voice  */
 	/* features will be searched too (after the utt ones)              */
 	feat_link_into(curr_vox->features, curr_utt->features);
 	feat_link_into(curr_vox->ffunctions, curr_utt->ffunctions);
 
+	feat_set(curr_utt->features, "streaming_info", audio_streaming_info_val(asi));
+
 	if (curr_vox->utt_init)
 		curr_vox->utt_init(curr_utt, curr_vox);
 	utt_synth_tokens(curr_utt);
-	wav = utt_wave(curr_utt);
+	
 	send_item_events();
-	if (volume != 100)
-		cst_wave_rescale(wav, volume * 65536 / 100);
-	site->Write(wav->samples,
-		    wav->num_samples * sizeof(*wav->samples),
-		    &b);
-	bcount += wav->num_samples * sizeof(*wav->samples);
+	
+	delete_audio_streaming_info(asi);
 	delete_utterance(curr_utt);
+	asi = NULL;
 	curr_utt = NULL;
 	tok_rel = NULL;
 }
