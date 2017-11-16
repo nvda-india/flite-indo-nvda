@@ -35,7 +35,7 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 
 [Files]
 Source: "vc_redist.x86.exe"; DestDir: "{tmp}"; Flags: ignoreversion
-Source: "../sapi/win32/debug/FliteCMUGenericCG.dll"; DestDir: {sys}; Flags: regserver 32bit
+Source: "../sapi/win32/release/FliteCMUGenericCG_Win32.dll"; DestDir: {sys}; Flags: regserver 32bit
 Source: "Languages\cmu_us_axb.flitevox"; DestDir: {app}\Languages
 Source: "Languages\cmu_indic_axb_hi.flitevox"; DestDir: {app}\Languages
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
