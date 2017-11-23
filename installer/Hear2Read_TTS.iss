@@ -23,7 +23,7 @@ DefaultDirName={pf}\Hear2Read
 DisableDirPage=yes
 DefaultGroupName=Hear2Read
 DisableProgramGroupPage=yes
-OutputBaseFilename=Hear2Read_TTS_10_04
+OutputBaseFilename=Hear2Read_TTS_11_21
 SetupIconFile=hear2read_Setup-vert-2color.ico
 Compression=lzma
 SolidCompression=yes
@@ -42,25 +42,25 @@ Source: "Languages\cmu_indic_axb_hi.flitevox"; DestDir: {app}\Languages
 
 [Registry]     
 ; English_axb
-root: HKLM; Subkey: "SOFTWARE\WOW6432Node\Microsoft\SPEECH\Voices\Tokens\English_axb"; ValueType: string; ValueName: ""; ValueData: "Hear2Read English Female"; Flags: uninsdeletekey;
-root: HKLM; Subkey: "SOFTWARE\WOW6432Node\Microsoft\SPEECH\Voices\Tokens\English_axb"; ValueType: string; ValueName: "409"; ValueData: "Hear2Read English Female"; Flags: uninsdeletekey;
-root: HKLM; Subkey: "SOFTWARE\WOW6432Node\Microsoft\SPEECH\Voices\Tokens\English_axb"; ValueType: string; ValueName: "CLSID"; ValueData: "{{435A0515-F568-4A0A-B5A3-42844348602F}"; Flags: uninsdeletekey;
-root: HKLM; Subkey: "SOFTWARE\WOW6432Node\Microsoft\SPEECH\Voices\Tokens\English_axb"; ValueType: string; ValueName: "voxdir"; ValueData: "C:\\Program Files (x86)\\Hear2Read\\Languages\\cmu_us_axb.flitevox"; Flags: uninsdeletekey;
-root: HKLM; Subkey: "SOFTWARE\WOW6432Node\Microsoft\SPEECH\Voices\Tokens\English_axb\Attributes"; ValueType: string; ValueName: "Age"; ValueData: "Adult"; Flags: uninsdeletekey;
-root: HKLM; Subkey: "SOFTWARE\WOW6432Node\Microsoft\SPEECH\Voices\Tokens\English_axb\Attributes"; ValueType: string; ValueName: "Gender"; ValueData: "Female"; Flags: uninsdeletekey;
-root: HKLM; Subkey: "SOFTWARE\WOW6432Node\Microsoft\SPEECH\Voices\Tokens\English_axb\Attributes"; ValueType: string; ValueName: "Language"; ValueData: "409;9"; Flags: uninsdeletekey;
-root: HKLM; Subkey: "SOFTWARE\WOW6432Node\Microsoft\SPEECH\Voices\Tokens\English_axb\Attributes"; ValueType: string; ValueName: "Name"; ValueData: "Hear2Read English Female"; Flags: uninsdeletekey;
-root: HKLM; Subkey: "SOFTWARE\WOW6432Node\Microsoft\SPEECH\Voices\Tokens\English_axb\Attributes"; ValueType: string; ValueName: "Vendor"; ValueData: "Hear2Read"; Flags: uninsdeletekey;
+root: HKLM; Subkey: "SOFTWARE\Microsoft\SPEECH\Voices\Tokens\English_axb"; ValueType: string; ValueName: ""; ValueData: "Hear2Read English Female"; Flags: uninsdeletekey;
+root: HKLM; Subkey: "SOFTWARE\Microsoft\SPEECH\Voices\Tokens\English_axb"; ValueType: string; ValueName: "409"; ValueData: "Hear2Read English Female"; Flags: uninsdeletekey;
+root: HKLM; Subkey: "SOFTWARE\Microsoft\SPEECH\Voices\Tokens\English_axb"; ValueType: string; ValueName: "CLSID"; ValueData: "{{435A0515-F568-4A0A-B5A3-42844348602F}"; Flags: uninsdeletekey;
+root: HKLM; Subkey: "SOFTWARE\Microsoft\SPEECH\Voices\Tokens\English_axb"; ValueType: string; ValueName: "voxdir"; ValueData: {app}\Languages\cmu_us_axb.flitevox; Flags: uninsdeletekey;
+root: HKLM; Subkey: "SOFTWARE\Microsoft\SPEECH\Voices\Tokens\English_axb\Attributes"; ValueType: string; ValueName: "Age"; ValueData: "Adult"; Flags: uninsdeletekey;
+root: HKLM; Subkey: "SOFTWARE\Microsoft\SPEECH\Voices\Tokens\English_axb\Attributes"; ValueType: string; ValueName: "Gender"; ValueData: "Female"; Flags: uninsdeletekey;
+root: HKLM; Subkey: "SOFTWARE\Microsoft\SPEECH\Voices\Tokens\English_axb\Attributes"; ValueType: string; ValueName: "Language"; ValueData: "409;9"; Flags: uninsdeletekey;
+root: HKLM; Subkey: "SOFTWARE\Microsoft\SPEECH\Voices\Tokens\English_axb\Attributes"; ValueType: string; ValueName: "Name"; ValueData: "Hear2Read English Female"; Flags: uninsdeletekey;
+root: HKLM; Subkey: "SOFTWARE\Microsoft\SPEECH\Voices\Tokens\English_axb\Attributes"; ValueType: string; ValueName: "Vendor"; ValueData: "Hear2Read"; Flags: uninsdeletekey;
 ; Hindi_axb
-root: HKLM; Subkey: "SOFTWARE\WOW6432Node\Microsoft\SPEECH\Voices\Tokens\Hindi_axb"; ValueType: string; ValueName: ""; ValueData: "Hear2Read Hindi Female"; Flags: uninsdeletekey;
-root: HKLM; Subkey: "SOFTWARE\WOW6432Node\Microsoft\SPEECH\Voices\Tokens\Hindi_axb"; ValueType: string; ValueName: "409"; ValueData: "Hear2Read Hindi Female"; Flags: uninsdeletekey;
-root: HKLM; Subkey: "SOFTWARE\WOW6432Node\Microsoft\SPEECH\Voices\Tokens\Hindi_axb"; ValueType: string; ValueName: "CLSID"; ValueData: "{{435A0515-F568-4A0A-B5A3-42844348602F}"; Flags: uninsdeletekey;
-root: HKLM; Subkey: "SOFTWARE\WOW6432Node\Microsoft\SPEECH\Voices\Tokens\Hindi_axb"; ValueType: string; ValueName: "voxdir"; ValueData: "C:\\Program Files (x86)\\Hear2Read\\Languages\\cmu_indic_axb_hi.flitevox"; Flags: uninsdeletekey;
-root: HKLM; Subkey: "SOFTWARE\WOW6432Node\Microsoft\SPEECH\Voices\Tokens\Hindi_axb\Attributes"; ValueType: string; ValueName: "Age"; ValueData: "Adult"; Flags: uninsdeletekey;
-root: HKLM; Subkey: "SOFTWARE\WOW6432Node\Microsoft\SPEECH\Voices\Tokens\Hindi_axb\Attributes"; ValueType: string; ValueName: "Gender"; ValueData: "Female"; Flags: uninsdeletekey;
-root: HKLM; Subkey: "SOFTWARE\WOW6432Node\Microsoft\SPEECH\Voices\Tokens\Hindi_axb\Attributes"; ValueType: string; ValueName: "Language"; ValueData: "439"; Flags: uninsdeletekey;
-root: HKLM; Subkey: "SOFTWARE\WOW6432Node\Microsoft\SPEECH\Voices\Tokens\Hindi_axb\Attributes"; ValueType: string; ValueName: "Name"; ValueData: "Hear2Read Hindi Female"; Flags: uninsdeletekey;
-root: HKLM; Subkey: "SOFTWARE\WOW6432Node\Microsoft\SPEECH\Voices\Tokens\Hindi_axb\Attributes"; ValueType: string; ValueName: "Vendor"; ValueData: "Hear2Read"; Flags: uninsdeletekey;
+root: HKLM; Subkey: "SOFTWARE\Microsoft\SPEECH\Voices\Tokens\Hindi_axb"; ValueType: string; ValueName: ""; ValueData: "Hear2Read Hindi Female"; Flags: uninsdeletekey;
+root: HKLM; Subkey: "SOFTWARE\Microsoft\SPEECH\Voices\Tokens\Hindi_axb"; ValueType: string; ValueName: "409"; ValueData: "Hear2Read Hindi Female"; Flags: uninsdeletekey;
+root: HKLM; Subkey: "SOFTWARE\Microsoft\SPEECH\Voices\Tokens\Hindi_axb"; ValueType: string; ValueName: "CLSID"; ValueData: "{{435A0515-F568-4A0A-B5A3-42844348602F}"; Flags: uninsdeletekey;
+root: HKLM; Subkey: "SOFTWARE\Microsoft\SPEECH\Voices\Tokens\Hindi_axb"; ValueType: string; ValueName: "voxdir"; ValueData: {app}\Languages\cmu_indic_axb_hi.flitevox; Flags: uninsdeletekey;
+root: HKLM; Subkey: "SOFTWARE\Microsoft\SPEECH\Voices\Tokens\Hindi_axb\Attributes"; ValueType: string; ValueName: "Age"; ValueData: "Adult"; Flags: uninsdeletekey;
+root: HKLM; Subkey: "SOFTWARE\Microsoft\SPEECH\Voices\Tokens\Hindi_axb\Attributes"; ValueType: string; ValueName: "Gender"; ValueData: "Female"; Flags: uninsdeletekey;
+root: HKLM; Subkey: "SOFTWARE\Microsoft\SPEECH\Voices\Tokens\Hindi_axb\Attributes"; ValueType: string; ValueName: "Language"; ValueData: "439"; Flags: uninsdeletekey;
+root: HKLM; Subkey: "SOFTWARE\Microsoft\SPEECH\Voices\Tokens\Hindi_axb\Attributes"; ValueType: string; ValueName: "Name"; ValueData: "Hear2Read Hindi Female"; Flags: uninsdeletekey;
+root: HKLM; Subkey: "SOFTWARE\Microsoft\SPEECH\Voices\Tokens\Hindi_axb\Attributes"; ValueType: string; ValueName: "Vendor"; ValueData: "Hear2Read"; Flags: uninsdeletekey;
 
 [Run]
 ; Filename: "{tmp}\VC_redist.x86.exe"; Parameters: "/install /quiet /norestart"; StatusMsg: "Installing Microsoft Visual C++ Redistributable on x86 ...."; Check: not VCinstalled
