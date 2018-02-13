@@ -521,6 +521,34 @@ CFliteTTSEngineObj::speak_frag()
 	cst_item *t;
 	char *text;
 	size_t len;
+	// Dinesh 28 December 2017
+	// this should be removed once Kannada voice mahaprana is fixed
+
+
+	wchar_t * tempText = new wchar_t[curr_frag->ulTextLen +2];
+	ULONG i = 0;
+
+	for (; i < curr_frag->ulTextLen; i++)
+	{
+		switch (curr_frag->pTextStart[i]) {
+		case 0XCA0:
+			tempText[i] = 0XC9F;
+			break;
+
+		case 0XCA2:
+			tempText[i] = 0XCA1;
+			break;
+
+		case 0XC9D:
+			tempText[i] = 0XC9C;
+			break;
+		
+		default:
+			tempText[i] = curr_frag->pTextStart[i];
+			break;
+		}
+	}
+	tempText[i+1] = 0x0000;
 
         // Sai Krishna + Tim 13 March 2017
 
@@ -528,14 +556,17 @@ CFliteTTSEngineObj::speak_frag()
 	//text = cst_alloc(char, len+1);
 	//wcstombs(text, curr_frag->pTextStart, curr_frag->ulTextLen);
 
-        len = WideCharToMultiByte(CP_UTF8, 0, curr_frag->pTextStart, curr_frag->ulTextLen, NULL, 0, NULL, NULL);
+        len = WideCharToMultiByte(CP_UTF8, 0, tempText, curr_frag->ulTextLen, NULL, 0, NULL, NULL);
         text = cst_alloc(char, len + 1);
-        WideCharToMultiByte(CP_UTF8, 0, curr_frag->pTextStart, curr_frag->ulTextLen, text, len, NULL, NULL);
+        WideCharToMultiByte(CP_UTF8, 0, tempText , curr_frag->ulTextLen, text, len, NULL, NULL);
         text[len] = 0x00;
 
         /////////////////////////
  
-	ts = my_ts_open_string(curr_utt, text);
+		delete[] tempText;
+		tempText = NULL;
+	
+		ts = my_ts_open_string(curr_utt, text);
 	cst_free(text);
 
 	while (!ts_eof(ts)) {
@@ -578,13 +609,14 @@ CFliteTTSEngineObj::spell_frag()
 		int len;
 
 		if (!iswspace(curr_frag->pTextStart[i])) {
-			len = wcstombs(NULL, curr_frag->pTextStart + i, 1);
-			c = cst_alloc(char, len + 1);
-			wcstombs(c, curr_frag->pTextStart + i, 1);
+								len = WideCharToMultiByte(CP_UTF8, 0, curr_frag->pTextStart + i, 1, NULL, 0, NULL, NULL);
+					c= cst_alloc(char, len + 1);
+					WideCharToMultiByte(CP_UTF8, 0, curr_frag->pTextStart + i , 1, c, len, NULL, NULL);
+					c[len] = 0x00;
 
-			t = append_new_token(NULL, c, tok_rel);
+		t = append_new_token(NULL, c, tok_rel);
 			item_set_int(t, "token_pos", curr_frag->ulTextSrcOffset + i);
-			item_set_int(t, "token_length", 1);
+			item_set_int(t, "token_length", 1 );
 			set_local_prosody(t, &curr_frag->State);
 			cst_free(c);
 		}

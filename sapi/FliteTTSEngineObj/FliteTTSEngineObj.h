@@ -58,8 +58,10 @@ public:
 		flite_init();
 		curr_utt = NULL;
 		curr_vox = NULL;
+		//logFile = fopen("d:\\flite.txt", "w");
 	}
 	~CFliteTTSEngineObj() {
+		//if (logFile) fclose(logFile);
 		if (curr_utt) delete_utterance(curr_utt);
 		if (unregfunc && curr_vox) (*unregfunc)(curr_vox);
 	}
@@ -126,6 +128,7 @@ private:
 	void pronounce_frag();
 	void silence_frag();
 	void set_bookmark();
+	//FILE* logFile = NULL;
 };
 
 #endif //__FLITETTSENGINEOBJ_H_
