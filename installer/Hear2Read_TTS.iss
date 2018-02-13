@@ -23,8 +23,8 @@ DefaultDirName={pf}\Hear2Read
 DisableDirPage=yes
 DefaultGroupName=Hear2Read
 DisableProgramGroupPage=yes
-OutputBaseFilename=Hear2Read_TTS_12_15
-SetupIconFile=Icon\hear2read_Setup-vert-2color.ico
+OutputBaseFilename=Hear2Read_TTS_2018_1_12_test
+SetupIconFile=Icon\h2r-32x32-win.ico
 Compression=lzma
 SolidCompression=yes
 LicenseFile=Windows_DLL_Installer_License.txt
@@ -35,7 +35,7 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 
 [Files]
 Source: "vc_redist.x86.exe"; DestDir: "{tmp}"; Flags: ignoreversion
-Source: "../sapi/win32/release/FliteCMUGenericCG_Win32.dll"; DestDir: {sys}; Flags: regserver 32bit
+Source: "../sapi/win32/release/FliteCMUGenericCG_Win32.dll"; DestDir: {app}; Flags: regserver 32bit ignoreversion
 Source: "Languages\cmu_us_axb.flitevox"; DestDir: {app}\Languages
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
@@ -52,8 +52,8 @@ root: HKLM; Subkey: "SOFTWARE\Microsoft\SPEECH\Voices\Tokens\English_axb\Attribu
 root: HKLM; Subkey: "SOFTWARE\Microsoft\SPEECH\Voices\Tokens\English_axb\Attributes"; ValueType: string; ValueName: "Vendor"; ValueData: "Hear2Read"; Flags: uninsdeletekey;
 
 [Run]
-; Filename: "{tmp}\VC_redist.x86.exe"; Parameters: "/install /quiet /norestart"; StatusMsg: "Installing Microsoft Visual C++ Redistributable on x86 ...."; Check: not VCinstalled
-Filename: "{tmp}\VC_redist.x86.exe";              
+Filename: "{tmp}\VC_redist.x86.exe"; Parameters: "/install /quiet /norestart"; StatusMsg: "Installing Microsoft Visual C++ Redistributable on x86 ...."; 
+//Filename: "{tmp}\VC_redist.x86.exe"; Check: not VCinstalled;             
 
 [Code]
 // This has been changed for the Forum Display. Use [ and ] in InnoSetup please.
@@ -66,7 +66,7 @@ function VCinstalled: Boolean;
   dName, key, year: String;
  begin
   // Year of redistributable to find; leave null to find installation for any year.
-  year := '';
+  year := '2015';
   Result := False;
   key := 'Software\Microsoft\Windows\CurrentVersion\Uninstall';
   // Get an array of all of the uninstall subkey names.
@@ -82,7 +82,8 @@ function VCinstalled: Boolean;
       if not RegQueryStringValue(HKEY_LOCAL_MACHINE, key + '\' + names[i], 'DisplayName', dName) then
        dName := names[i];
       // See if the value contains both of the strings below.
-      Result := (Pos(Trim('Visual C++ ' + year),dName) * Pos('Redistributable',dName) <> 0)
+Log( 'value for ' + IntToStr(Pos(Trim('Visual C++ ' + year),dName)) +' registry display name ' +  dName )
+      Result := (Pos(Trim('Visual C++ ' + year),dName) <> 0)
       i := i + 1;
      end;
    end;

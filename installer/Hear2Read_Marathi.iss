@@ -27,17 +27,17 @@ DisableDirPage=yes
 DefaultGroupName=Hear2Read
 DisableProgramGroupPage=yes
 OutputBaseFilename=Hear2Read_Marathi_Male_Voice
-SetupIconFile=Icon\hear2read-Marathi-vert-2color.ico
+SetupIconFile=Icon\h2r-32x32-win.ico
 Compression=lzma
 SolidCompression=yes
-LicenseFile=license.rtf
+LicenseFile=Windows_Voice_Installer_License.txt
 ;WizardImageFile=C:\Hear2Read_indic_SAPI_Voice\InnoSetup\hear2read-Marathi-vert-2color.bmp
 
 [Languages]
 Name: "english"; MessagesFile: "compiler:Default.isl"
 
 [Files]
-Source: "Languages\cmu_indic_aup_mrv5.flitevox"; DestDir: {app}\Languages
+Source: "Languages\h2r_indic_aup_mrV6.flitevox"; DestDir: {app}\Languages
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Registry]     
@@ -45,7 +45,7 @@ Source: "Languages\cmu_indic_aup_mrv5.flitevox"; DestDir: {app}\Languages
 root: HKLM; Subkey: "SOFTWARE\Microsoft\SPEECH\Voices\Tokens\Marathi_aup"; ValueType: string; ValueName: ""; ValueData: "Hear2Read Marathi male"; Flags: uninsdeletekey;
 root: HKLM; Subkey: "SOFTWARE\Microsoft\SPEECH\Voices\Tokens\Marathi_aup"; ValueType: string; ValueName: "409"; ValueData: "Hear2Read Marathi male"; Flags: uninsdeletekey;
 root: HKLM; Subkey: "SOFTWARE\Microsoft\SPEECH\Voices\Tokens\Marathi_aup"; ValueType: string; ValueName: "CLSID"; ValueData: "{{435A0515-F568-4A0A-B5A3-42844348602F}"; Flags: uninsdeletekey;
-root: HKLM; Subkey: "SOFTWARE\Microsoft\SPEECH\Voices\Tokens\Marathi_aup"; ValueType: string; ValueName: "voxdir"; ValueData: {app}\Languages\cmu_indic_aup_mrV5.flitevox; Flags: uninsdeletekey;
+root: HKLM; Subkey: "SOFTWARE\Microsoft\SPEECH\Voices\Tokens\Marathi_aup"; ValueType: string; ValueName: "voxdir"; ValueData: {app}\Languages\h2r_indic_aup_mrV6.flitevox; Flags: uninsdeletekey;
 root: HKLM; Subkey: "SOFTWARE\Microsoft\SPEECH\Voices\Tokens\Marathi_aup\Attributes"; ValueType: string; ValueName: "Age"; ValueData: "Adult"; Flags: uninsdeletekey;
 root: HKLM; Subkey: "SOFTWARE\Microsoft\SPEECH\Voices\Tokens\Marathi_aup\Attributes"; ValueType: string; ValueName: "Gender"; ValueData: "Male"; Flags: uninsdeletekey;
 root: HKLM; Subkey: "SOFTWARE\Microsoft\SPEECH\Voices\Tokens\Marathi_aup\Attributes"; ValueType: string; ValueName: "Language"; ValueData: "439"; Flags: uninsdeletekey;
