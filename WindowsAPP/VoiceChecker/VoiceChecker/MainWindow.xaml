@@ -1,0 +1,39 @@
+﻿<Window x:Class="Hear2Read_TTS_App.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Hear2Read_TTS_App"
+        mc:Ignorable="d"
+        Title="Hear2Read TTS App" Height="400" Width="700"
+        Icon="h2r-32x32-win.ico">
+    <Grid>
+        <DockPanel LastChildFill="True">
+            <StackPanel DockPanel.Dock="Top" Background="#b3c6ff" Margin="0,0,0,2" >
+                <DockPanel LastChildFill="True">
+                    <Button x:Name="Logo" DockPanel.Dock="Right"  Click="Logo_Click" Background="#b3c6ff" BorderThickness="0">
+                        <Image x:Name="H2RLogo" Source="hear2read-horizontal@2x.png"  Height="36" Width="100" Margin="5 0 "/>
+                    </Button>
+                    <TextBlock DockPanel.Dock="Left" Background="#b3c6ff" FontSize="22 " Width="350" Margin="20" Foreground="#FF101FBB">
+                        Windows Indic Language TTS (Beta)
+                    </TextBlock>
+
+                    <TextBlock DockPanel.Dock="Top"/>
+                </DockPanel>
+            </StackPanel>
+            <StackPanel DockPanel.Dock="Top" Background="#00548b">
+                <TextBlock FontSize="20" TextWrapping="Wrap" Foreground="White" Margin="10 10" TextAlignment="Center">
+                    The Following Hear2Read Indic Languages are installed on the PC.
+                </TextBlock>
+            </StackPanel>
+            <StackPanel DockPanel.Dock="Bottom" Background="#00548B">
+                <Button x:Name="GetVoices" Width="150" Height="30" Foreground="#FF101FBB" Click="Get_Voices">Get More Voices Here</Button>
+            </StackPanel>
+            <StackPanel DockPanel.Dock="Bottom" Background="#00548B">
+                <ScrollViewer  MaxHeight="200">
+                    <StackPanel x:Name="VoiceList" ScrollViewer.VerticalScrollBarVisibility="Auto"  />
+                </ScrollViewer>
+            </StackPanel>
+        </DockPanel>
+    </Grid>
+</Window>
